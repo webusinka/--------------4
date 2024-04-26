@@ -23,12 +23,20 @@ int typeOfElementCount(const vector<int>& container, int element) { //подсч
     return count;
 }
 
-double mathExpectation(const vector<int>& container) { //вычисление математического ожидания
+double mathExpectation(const vector<int>& container) { //вычисление реального математического ожидания
     double sum = 0;
     for (const int& value : container) {
         sum += value;
     }
     return sum / container.size();
+}
+
+double mathExp(vector<int>& array) { //вычисление ожидаемого математического ожидания
+    double sum = 0;
+	for (auto& a : array) {
+		sum += a;
+	}
+	return (sum / 100);
 }
 
 double mathDispersion(const vector<int>& container) { //функция для вычисления дисперсии
@@ -69,11 +77,11 @@ int main() {
     fillVectorWithRandom(vector1000);
 
     double criticalValue = 124.342; // Критическое значение хи-квадрат для 99 степеней свободы и уровня значимости 0.05
-    
+
     //для 50 элементов
     double chiSquareValue = chiSquare(vector50);
-    double meanExpected = mathExpectation(vector50);
-    double meanObserved = mathExpectation(vector50);
+    double meanExpected = mathExpectation(vector50); //реальное математическое ожидание
+    double meanObserved = mathExp(vector50);
 
     cout << "Chi-Square P-value: " << chiSquareValue << endl;
 
@@ -90,7 +98,7 @@ int main() {
     //для 100 элементов
     chiSquareValue = chiSquare(vector100);
     meanExpected = mathExpectation(vector100);
-    meanObserved = mathExpectation(vector100);
+    meanObserved = mathExp(vector100);
 
     cout << "Chi-Square P-value: " << chiSquareValue << endl;
 
@@ -107,7 +115,7 @@ int main() {
     //для 1000 элементов
     chiSquareValue = chiSquare(vector1000);
     meanExpected = mathExpectation(vector1000);
-    meanObserved = mathExpectation(vector1000);
+    meanObserved = mathExp(vector1000);
 
     cout << "Chi-Square P-value: " << chiSquareValue << endl;
 
