@@ -36,7 +36,7 @@ double mathExp(vector<int>& array) { //вычисление ожидаемого
 	for (auto& a : array) {
 		sum += a;
 	}
-	return (sum / 100);
+	return sum / array.size();
 }
 
 double mathDispersion(const vector<int>& container) { //функция для вычисления дисперсии
